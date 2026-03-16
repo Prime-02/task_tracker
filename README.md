@@ -193,7 +193,7 @@ _I generated the folder structure using the DRAW FOLDER STRUCTURE Vs Code extens
 
 ```bash
 # If using git
-git clone <your-repo-url>
+git clone <https://github.com/Prime-02/task_tracker>
 cd task-tracker
 
 # Or just extract the ZIP into your folder
@@ -211,10 +211,11 @@ Create a `.env.local` file in the project root:
 
 ```env
 # Your PostgreSQL connection string
-DATABASE_URL=postgresql://username:password@localhost:5432/tasktracker
+DATABASE_URL=request-for-url-here
+
 
 # A long, random secret for signing JWT tokens
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+JWT_SECRET=request-for-secret-here
 
 # App URL
 NEXT_PUBLIC_APP_URL=http://localhost:3000
@@ -233,7 +234,7 @@ psql -U postgres -c "CREATE DATABASE tasktracker;"
 ### 5. Run migrations
 
 ```bash
-node lib/migrate.js
+node src/lib/migrate.js
 ```
 
 Expected output:
@@ -310,36 +311,6 @@ Open [http://localhost:3000](http://localhost:3000) — you'll be redirected to 
 |---|---|---|
 | GET | `/api/profile` | Get profile + task count stats |
 | PATCH | `/api/profile` | Update name, avatar color, or password |
-
----
-
-## 🚢 Deploying to Production
-
-### Vercel + Neon (recommended)
-
-1. Push your code to a GitHub repo.
-2. Create a free PostgreSQL database at [neon.tech](https://neon.tech).
-3. Import your repo into [Vercel](https://vercel.com).
-4. Add your environment variables in Vercel's project settings:
-   - `DATABASE_URL` — from Neon dashboard
-   - `JWT_SECRET` — any long random string
-5. Deploy. Run migrations once against your Neon DB:
-   ```bash
-   DATABASE_URL=<your-neon-url> node lib/migrate.js
-   ```
-
-> **Note:** For production, `ssl` is automatically enabled in `lib/db.js` when `NODE_ENV=production`.
-
----
-
-## 🛠 Known Limitations & Future Ideas
-
-- [ ] Task categories / labels
-- [ ] Drag-and-drop kanban board view
-- [ ] Email notifications for due dates
-- [ ] Subtasks / checklists
-- [ ] Dark / light theme toggle
-- [ ] Export tasks to CSV
 
 ---
 
